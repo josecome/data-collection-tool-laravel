@@ -34,7 +34,7 @@
 @else
 <div class="alert alert-warning alert-block">
 	<button type="button" class="close" data-dismiss="alert">×</button>
-	<strong>You need to Login to see products in CART</strong>
+	<strong>You need to Login to see Forms details</strong>
 </div>
 @endauth
 

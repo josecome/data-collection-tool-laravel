@@ -67,6 +67,19 @@
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
       }
+      .projects_name {
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        width: 100%;
+      }
+      .projects_name_y {
+        background-color: white;
+        color: #383838;
+      }
+      .projects_name_n {
+        background-color: #808B96;
+        color: white;
+      }
     </style>
 <script>
     function setDataInForm(ctgry, descrip, image_link, txt_id) {
