@@ -35,6 +35,7 @@
             <div style="margin-left: 300px;">
                @if(isset($form_id))
                     <h3>{{ $form_id[0]->form_name }}</h3>
+                    <form action="/formpage/submitnewfield" style="width: 100%">
                     <table style="width: 100%">
                       <tr>
                         <td>
@@ -76,15 +77,14 @@
                             <input type="name" class="form-control" id="name" placeholder="Enter name" style="width: 260px">
                         </td>
                         <td colspan="2">
-                            <form action="/formpage/{{ $f->id }}" style="float: right; padding-right: 4px;">
-                                <button type="submit" class="">Add</button>
-                            </form>
+                            <button type="submit" class="">Add</button>
                         </td>
                       </tr>
                       <tr>
                       <td colspan="6"><hr style="width: 100%;"/></td>
                       </tr>
                     </table>
+                </form>
                @else
                     <h3>No Form Selected </h3>
                @endif
