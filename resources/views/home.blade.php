@@ -15,37 +15,57 @@
                 <div style="color: white; background-color: #2471A3; width: 100%;">
                     Deployed (@if($form_deployed) {{ count($form_deployed) }} @endif)
                 </div>
+                <table style="width: 100%;">
                 @foreach ($form_deployed as $key=>$f)
-                 <div @class([
-                    'projects_name',
-                    'projects_name_y' => $key % 2 == 0,
-                    'projects_name_n' => $key % 2 == 1,
-                    ])>
-                    <form action="/formpage/{{ $f->id }}" style="float: left; padding-right: 4px;">
-                        <button type="submit" class="">{{ $f->form_name }}</button>
-                    </form>
-                </div>
-                @endforeach
+                    <tr>
+                     <td @class([
+                        'projects_name',
+                        'projects_name_y' => $key % 2 == 0,
+                        'projects_name_n' => $key % 2 == 1,
+                        ])>
+                         <form action="/formpage/{{ $f->id }}" style="float: left; padding-right: 4px;">
+                             <button type="submit" class="btn default">{{ $f->form_name }}</button>
+                         </form>
+                     </td>
+                    </tr>
+                    @endforeach
+                </table>
                <div style="color: white; background-color: #2471A3; width: 100%;">
                   Draft (@if($form_draft) {{ count($form_draft) }} @endif)
                </div>
-               @foreach ($form_draft as $key=>$f)
-               <div @class([
-                    'projects_name',
-                    'projects_name_y' => $key % 2 == 0,
-                    'projects_name_n' => $key % 2 == 1,
-                    ])>{{ $f->form_name }}</div>
-               @endforeach
+               <table style="width: 100%;">
+                @foreach ($form_draft as $key=>$f)
+                    <tr>
+                     <td @class([
+                        'projects_name',
+                        'projects_name_y' => $key % 2 == 0,
+                        'projects_name_n' => $key % 2 == 1,
+                        ])>
+                         <form action="/formpage/{{ $f->id }}" style="float: left; padding-right: 4px;">
+                             <button type="submit" class="btn default">{{ $f->form_name }}</button>
+                         </form>
+                     </td>
+                    </tr>
+                    @endforeach
+                </table>
                <div style="color: white; background-color: #2471A3; width: 100%;">
                    Arquived (@if($form_arquived) {{ count($form_arquived) }} @endif)
                </div>
-               @foreach ($form_arquived as $key=>$f)
-               <div @class([
-                    'projects_name',
-                    'projects_name_y' => $key % 2 == 0,
-                    'projects_name_n' => $key % 2 == 1,
-                    ])>{{ $f->form_name }}</div>
-               @endforeach
+               <table style="width: 100%;">
+                   @foreach ($form_arquived as $key=>$f)
+                    <tr>
+                     <td @class([
+                        'projects_name',
+                        'projects_name_y' => $key % 2 == 0,
+                        'projects_name_n' => $key % 2 == 1,
+                        ])>
+                         <form action="/formpage/{{ $f->id }}" style="float: left; padding-right: 4px;">
+                             <button type="submit" class="btn default">{{ $f->form_name }}</button>
+                         </form>
+                     </td>
+                    </tr>
+                    @endforeach
+                </table>
             </div>
             <div style="margin-left: 300px;">
                @if(isset($form_id))
