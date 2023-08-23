@@ -166,6 +166,7 @@
                     <h3>No Form Selected </h3>
                @endif
             </div>
+
     </div>
     <!-- New Form Modal -->
     <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="NewProjectModalLabel" aria-hidden="true">
@@ -199,6 +200,42 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Preview Modal -->
+<div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="previewModalLabel">
+            <strong>Preview Form</strong><br>
+            <span style="font-size: 18px;">
+                @if (form_id)
+                    {{ form_id->form_name }}
+                @endif
+            </span>
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <table style="width: 100%; background-color: white; padding-bottom: 10px; margin-bottom: 10px;">
+            @foreach ($fields as $key=>$field)
+                <tr style="width: 100%;">
+                    <td style="width: 100%;">{{ field->field_label }}</td>
+                </tr>
+                <tr>
+                    <td style="width: 100%;">
+                        <input type="text" value="" name="{{ field->field_name }}"  style="width: 100%;" />
+                    </td>
+                </tr>
+            @endforeach
+            </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Validate</button>
         </div>
       </div>
     </div>
