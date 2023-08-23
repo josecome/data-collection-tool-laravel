@@ -67,9 +67,51 @@
                     @endforeach
                 </table>
             </div>
-            <div style="margin-left: 300px;">
+            <div style="margin-left: 300px; width: 100%;">
                @if(isset($form_id))
-                    <h3>{{ $form_id[0]->form_name }}</h3>
+               <table style="width: 100%;">
+                <tr style="width: 100%;">
+                    <td style="width: 100%;">
+                    <h3 style="width: 100%;">{{ $form_id[0]->form_name }}</h3>
+                    </td>
+                    <td>
+                    <form action="/deployform/" method="post">
+                    @csrf
+                        <input type="hidden" name="form_url_d" value="{{ Request::segment(2) }}"/>
+                        <button type="submit" class="btn btn-primary" style="background-color: #2ECC71;">
+                            Deploy
+                        </button>
+                    </form>
+                    </td>
+                    <td>
+                    <form action="/archiveform/" method="post">
+                    @csrf
+                        <input type="hidden" name="form_url_a" value="{{ Request::segment(2) }}"/>
+                        <button type="submit" class="btn btn-primary" style="background-color: #E74C3C;">
+                            Archive
+                        </button>
+                    </form>
+                    </td>
+                    <td>
+                        <button type="button"
+                            class="btn btn-primary"
+                            data-bs-toggle="modal"
+                            data-bs-target="#previewModal"
+                            style="background-color: #ABB2B9; color: blue;"
+                        >
+                            Preview
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        @if($form_id[0]->form_status == "deployed")
+                            <a href="/deployed/{{ $form_id[0]->id }}" style="font-size: 12px; text-decoration: none;">Link form online access</a>
+                        @endif
+                    </td>
+                </tr>
+               </table><br>
+
                     <form action="/formpage/submitnewfield" style="width: 100%">
                     <table style="width: 100%">
                       <tr>
