@@ -3,6 +3,15 @@
 <main>
 <div style="width: 100%; overflow: hidden;">
             <div style="width: 280px; float: left;">
+                <button type="button"
+                        class="btn btn-primary"
+                        data-bs-toggle="modal"
+                        data-bs-target="#formModal"
+                        style="width: 100%;"
+                >
+                New Project
+                </button><br>
+            <div style="width: 280px; float: left;">
                 <div style="color: white; background-color: #2471A3; width: 100%;">Deployed</div>
                 @foreach ($form_deployed as $key=>$f)
                  <div @class([
@@ -90,5 +99,41 @@
                @endif
             </div>
     </div>
+    <!-- New Form Modal -->
+    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="NewProjectModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="NewProjectModalLabel">New Project</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/createnewform/" method="post" class="new_project_form">
+                @csrf
+                <p>
+                    <label for="id_form_name">Form name:</label>
+                    <input type="text" name="form_name" maxlength="80" required id="id_form_name">
+                </p>
+                <p>
+                    <label for="id_form_description">Form description:</label>
+                    <input type="text" name="form_description" maxlength="160" required id="id_form_description">
+                </p>
+                <p>
+                    <label for="id_form_country">Form country:</label>
+                    <input type="text" name="form_country" maxlength="40" required id="id_form_country">
+                </p>
+                <p>
+                    <label for="id_form_field">Form field:</label>
+                    <input type="text" name="form_field" maxlength="80" required id="id_form_field">
+                </p>
+                <button type="submit" class="btn btn-primary">Create</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </main>
 @endsection
