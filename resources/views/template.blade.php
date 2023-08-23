@@ -80,6 +80,9 @@
         background-color: #808B96;
         color: white;
       }
+      .new_project_form label {
+          width: 160px;
+      }
     </style>
 <script>
     function setDataInForm(ctgry, descrip, image_link, txt_id) {
