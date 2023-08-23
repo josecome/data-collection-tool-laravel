@@ -12,7 +12,9 @@
                 New Project
                 </button><br>
             <div style="width: 280px; float: left;">
-                <div style="color: white; background-color: #2471A3; width: 100%;">Deployed</div>
+                <div style="color: white; background-color: #2471A3; width: 100%;">
+                    Deployed (@if($form_deployed) {{ count($form_deployed) }} @endif)
+                </div>
                 @foreach ($form_deployed as $key=>$f)
                  <div @class([
                     'projects_name',
@@ -24,7 +26,9 @@
                     </form>
                 </div>
                 @endforeach
-               <div style="color: white; background-color: #2471A3; width: 100%;">Draft</div>
+               <div style="color: white; background-color: #2471A3; width: 100%;">
+                  Draft (@if($form_draft) {{ count($form_draft) }} @endif)
+               </div>
                @foreach ($form_draft as $key=>$f)
                <div @class([
                     'projects_name',
@@ -32,7 +36,9 @@
                     'projects_name_n' => $key % 2 == 1,
                     ])>{{ $f->form_name }}</div>
                @endforeach
-               <div style="color: white; background-color: #2471A3; width: 100%;">Arquived</div>
+               <div style="color: white; background-color: #2471A3; width: 100%;">
+                   Arquived (@if($form_arquived) {{ count($form_arquived) }} @endif)
+               </div>
                @foreach ($form_arquived as $key=>$f)
                <div @class([
                     'projects_name',
