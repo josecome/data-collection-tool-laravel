@@ -33,7 +33,7 @@ class FormController extends Controller
         $form_fields = ProjectForm::where('form_meta_id', $id)->get();
         return view('home',
                 [
-                    'form_id'=>$formid,
+                    'form_id'=>json_decode($formid),
                     'form_deployed'=>json_decode($deployed),
                     'form_draft'=>json_decode($draft),
                     'form_arquived'=>json_decode($arquived),
@@ -70,7 +70,7 @@ class FormController extends Controller
             $proj->form_meta_id = $req->form_meta_id;
             $proj->user_id = 1;
             $proj->save();
-            return Redirect::to('/formpage/' . $req->form_meta_id )->with('success', $result);
+            return Redirect::to('/formpage/' . $proj->id )->with('success', $result);
         } catch(Exception $e) {
             $result = 'Error ocurred: ' . $e->getMessage();
             return back()->with('error', $result);

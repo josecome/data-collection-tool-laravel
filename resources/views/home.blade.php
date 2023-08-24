@@ -221,7 +221,7 @@
             <strong>Preview Form</strong><br>
             <span style="font-size: 18px;">
                 @if (isset($form_id))
-                    {{ $form_id }}
+                    {{ $form_id[0]->form_name }}
                 @endif
             </span>
           </h1>
