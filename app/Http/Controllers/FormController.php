@@ -26,11 +26,13 @@ class FormController extends Controller
 
     public function formpage(string $id)
     {
-        $formid = ProjectFormMeta::find($id)->get(); //all();
+        $formid = ProjectFormMeta::find($id); //all();
         $deployed = ProjectFormMeta::where('form_status', 'deployed')->get(); //all();
         $draft = ProjectFormMeta::where('form_status', 'draft')->get();
         $arquived = ProjectFormMeta::where('form_status', 'archived')->get();
         $form_fields = ProjectForm::where('form_meta_id', $id)->get();
+        error_log($formid);
+        error_log($id);
         return view('home',
                 [
                     'form_id'=>json_decode($formid),

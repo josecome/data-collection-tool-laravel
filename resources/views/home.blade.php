@@ -72,7 +72,7 @@
                <table style="width: 100%;">
                 <tr>
                     <td>
-                    <h3>{{ $form_id[0]->form_name }}</h3>
+                    <h3>{{ $form_id->form_name }}</h3>
                     </td>
                     <td>
                     <form action="/deployform/" method="post">
@@ -105,8 +105,8 @@
                 </tr>
                 <tr>
                     <td colspan="4">
-                        @if($form_id[0]->form_status == "deployed")
-                            <a href="/deployed/{{ $form_id[0]->id }}" style="font-size: 12px; text-decoration: none;">Link form online access</a>
+                        @if($form_id->form_status == "deployed")
+                            <a href="/deployed/{{ $form_id->id }}" style="font-size: 12px; text-decoration: none;">Link form online access</a>
                         @endif
                     </td>
                 </tr>
@@ -221,7 +221,7 @@
             <strong>Preview Form</strong><br>
             <span style="font-size: 18px;">
                 @if (isset($form_id))
-                    {{ $form_id[0]->form_name }}
+                    {{ $form_id->form_name }}
                 @endif
             </span>
           </h1>
