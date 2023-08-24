@@ -29,7 +29,7 @@ class FormController extends Controller
         $formid = ProjectFormMeta::find($id)->get(); //all();
         $deployed = ProjectFormMeta::where('form_status', 'deployed')->get(); //all();
         $draft = ProjectFormMeta::where('form_status', 'draft')->get();
-        $arquived = ProjectFormMeta::where('form_status', 'arquived')->get();
+        $arquived = ProjectFormMeta::where('form_status', 'archived')->get();
         $form_fields = ProjectForm::where('form_meta_id', $id)->get();
         return view('home',
                 [
@@ -82,6 +82,17 @@ class FormController extends Controller
             ProjectFormMeta::whereId((int) $req->form_url_d)->update(['form_status' => 'deployed']);
 
             return Redirect::to('/formpage/' . $req->form_url_d )->with('success', $result);
+        } catch(Exception $e) {
+            $result = 'Error ocurred: ' . $e->getMessage();
+            return back()->with('error', $result);
+        }
+    }
+    public function archiveform(Request $req){
+        $result = "";
+        try{
+            ProjectFormMeta::whereId((int) $req->form_url_a)->update(['form_status' => 'archived']);
+
+            return Redirect::to('/formpage/' . $req->form_url_a )->with('success', $result);
         } catch(Exception $e) {
             $result = 'Error ocurred: ' . $e->getMessage();
             return back()->with('error', $result);

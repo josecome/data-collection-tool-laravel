@@ -49,7 +49,7 @@
                     @endforeach
                 </table>
                <div style="color: white; background-color: #2471A3; width: 100%;">
-                   Arquived (@if($form_arquived) {{ count($form_arquived) }} @endif)
+                   Archived (@if($form_arquived) {{ count($form_arquived) }} @endif)
                </div>
                <table style="width: 100%;">
                    @foreach ($form_arquived as $key=>$f)
