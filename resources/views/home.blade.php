@@ -119,39 +119,36 @@
                             Name:
                         </td>
                         <td>
-                            <input type="name" class="form-control" id="name" placeholder="Enter name" style="width: 260px">
+                            <input type="name" class="form-control" name="field_name" id="field_name" placeholder="Enter Field Name" style="width: 260px">
                         </td>
                         <td>
                             Label:
                         </td>
                         <td>
-                            <input type="name" class="form-control" id="name" placeholder="Enter name" style="width: 260px">
+                            <input type="name" class="form-control" name="field_label" id="field_label" placeholder="Enter name" style="width: 260px">
                         </td>
                         <td>
                             Type:
                         </td>
                         <td>
-                            <select class="form-control" id="qtype" style="width: 260px">
-                                <option>String</option>
-                                <option>Integer</option>
+                            <select class="form-control" name="field_type" id="field_type" style="width: 260px">
+                                <option>Type</option>
+                                <option>Select</option>
                             </select>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Type:
-                        </td>
-                        <td>
-                            <select class="form-control" id="qtype" style="width: 260px">
-                                <option>Type</option>
-                                <option>Select</option>
-                            </select>
-                        </td>
-                        <td>
                             Length:
                         </td>
                         <td>
-                            <input type="name" class="form-control" id="name" placeholder="Enter name" style="width: 260px">
+                            <input type="name" class="form-control" name="field_size" id="field_size" placeholder="Enter name" style="width: 260px">
+                        </td>
+                        <td>
+                            Description:
+                        </td>
+                        <td>
+                            <input type="name" class="form-control" name="field_description" id="field_description" placeholder="Enter name" style="width: 260px">
                         </td>
                         <td colspan="2">
                             <button type="submit" class="">Add</button>
