@@ -58,4 +58,22 @@ class FormController extends Controller
             return back()->with('error', $result);
         }
     }
+    public function submitnewfield(Request $req) {
+        $result = "";
+        try{
+            $proj = new ProjectForm;
+            $proj->field_name = $req->field_name;
+            $proj->field_label = $req->field_label;
+            $proj->field_description = $req->field_description;
+            $proj->field_type = $req->field_type;
+            $proj->field_size = $req->field_size;
+            $proj->form_meta_id = $req->form_meta_id;
+            $proj->user_id = 1;
+            $proj->save();
+            return Redirect::to('/formpage/' . $req->form_meta_id )->with('success', $result);
+        } catch(Exception $e) {
+            $result = 'Error ocurred: ' . $e->getMessage();
+            return back()->with('error', $result);
+        }
+    }
 }

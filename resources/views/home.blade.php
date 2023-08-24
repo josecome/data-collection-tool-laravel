@@ -112,7 +112,8 @@
                 </tr>
                </table><br>
 
-                    <form action="/formpage/submitnewfield" style="width: 100%">
+                    <form action="/submitnewfield" method="post" style="width: 100%">
+                    @csrf
                     <table style="width: 100%">
                       <tr>
                         <td>
@@ -132,8 +133,9 @@
                         </td>
                         <td>
                             <select class="form-control" name="field_type" id="field_type" style="width: 260px">
-                                <option>Type</option>
-                                <option>Select</option>
+                                <option>String</option>
+                                <option>Integer</option>
+                                <option>Option</option>
                             </select>
                         </td>
                     </tr>
@@ -149,6 +151,7 @@
                         </td>
                         <td>
                             <input type="name" class="form-control" name="field_description" id="field_description" placeholder="Enter name" style="width: 260px">
+                            <input type="hidden" name="form_meta_id" value="{{ Request::segment(2) }}" />
                         </td>
                         <td colspan="2">
                             <button type="submit" class="">Add</button>
@@ -221,11 +224,11 @@
             @if (isset($fields))
             @foreach ($fields as $key=>$field)
                 <tr style="width: 100%;">
-                    <td style="width: 100%;">{{ field->field_label }}</td>
+                    <td style="width: 100%;">{{ $field->field_label }}</td>
                 </tr>
                 <tr>
                     <td style="width: 100%;">
-                        <input type="text" value="" name="{{ field->field_name }}"  style="width: 100%;" />
+                        <input type="text" value="" name="{{ $field->field_name }}"  style="width: 100%;" />
                     </td>
                 </tr>
             @endforeach
