@@ -111,7 +111,8 @@
                     </td>
                 </tr>
                </table><br>
-
+               <fieldset style="border: 1px solid white; padding: 20px; background-color: #BFC9CA;">
+               <legend>New Field:</legend>
                     <form action="/submitnewfield" method="post" style="width: 100%">
                     @csrf
                     <table style="width: 100%">
@@ -162,9 +163,16 @@
                       </tr>
                     </table>
                 </form>
-               @else
+                </fieldset>
+                <br>
+                @foreach ($fields as $key=>$field)
+                <div style="width: 100%; background-color: white; padding-bottom: 10px; margin-bottom: 10px;">
+                    Label: {{ $field->field_label }} Name: {{ $field->field_name }}
+                </div>
+                @endforeach
+                @else
                     <h3>No Form Selected </h3>
-               @endif
+                @endif
             </div>
 
     </div>
@@ -204,7 +212,7 @@
       </div>
     </div>
   </div>
-    <!-- Preview Modal -->
+    <!-- Preview Form Modal -->
 <div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
