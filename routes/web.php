@@ -16,3 +16,4 @@ use App\Http\Controllers\FormController;
 
 Route::get('/', [FormController::class, 'home']);
 Route::get('/formpage/{id}', [FormController::class, 'formpage']);
+Route::post('/createnewform/', [FormController::class, 'createnewform']);

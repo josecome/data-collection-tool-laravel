@@ -67,12 +67,12 @@
                     @endforeach
                 </table>
             </div>
-            <div style="margin-left: 300px; width: 100%;">
+            <div style="margin-left: 300px; width: 900px;">
                @if(isset($form_id))
                <table style="width: 100%;">
-                <tr style="width: 100%;">
-                    <td style="width: 100%;">
-                    <h3 style="width: 100%;">{{ $form_id[0]->form_name }}</h3>
+                <tr>
+                    <td>
+                    <h3>{{ $form_id[0]->form_name }}</h3>
                     </td>
                     <td>
                     <form action="/deployform/" method="post">
@@ -212,8 +212,8 @@
           <h1 class="modal-title fs-5" id="previewModalLabel">
             <strong>Preview Form</strong><br>
             <span style="font-size: 18px;">
-                @if (form_id)
-                    {{ form_id->form_name }}
+                @if (isset($form_id))
+                    {{ $form_id }}
                 @endif
             </span>
           </h1>
@@ -221,6 +221,7 @@
         </div>
         <div class="modal-body">
             <table style="width: 100%; background-color: white; padding-bottom: 10px; margin-bottom: 10px;">
+            @if (isset($fields))
             @foreach ($fields as $key=>$field)
                 <tr style="width: 100%;">
                     <td style="width: 100%;">{{ field->field_label }}</td>
@@ -231,6 +232,7 @@
                     </td>
                 </tr>
             @endforeach
+            @endif
             </table>
         </div>
         <div class="modal-footer">

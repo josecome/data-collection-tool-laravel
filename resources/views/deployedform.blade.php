@@ -9,8 +9,8 @@
 </head>
 <body>
     <h1 style="padding: 10px;">
-        @if (form)
-            {{ form->form_name }}
+        @if ($form)
+            {{ $form->form_name }}
         @endif
       </h1>
       <form action="{{ Request::segment(2) }}" method="post" style="padding: 10px;">
@@ -18,7 +18,7 @@
         <table style="width: 100%; background-color: white; padding-bottom: 10px; margin-bottom: 10px;">
         @foreach ($fields as $key=>$f)
         <tr style="width: 100%;">
-            <td style="width: 100%;">{{ f->field_label }}</td>
+            <td style="width: 100%;">{{ $f->field_label }}</td>
         </tr>
         <tr>
             <td style="width: 100%;">
