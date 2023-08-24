@@ -76,4 +76,15 @@ class FormController extends Controller
             return back()->with('error', $result);
         }
     }
+    public function deployform(Request $req){
+        $result = "";
+        try{
+            ProjectFormMeta::whereId((int) $req->form_url_d)->update(['form_status' => 'deployed']);
+
+            return Redirect::to('/formpage/' . $req->form_url_d )->with('success', $result);
+        } catch(Exception $e) {
+            $result = 'Error ocurred: ' . $e->getMessage();
+            return back()->with('error', $result);
+        }
+    }
 }

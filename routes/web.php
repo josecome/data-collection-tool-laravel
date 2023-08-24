@@ -18,3 +18,4 @@ Route::get('/', [FormController::class, 'home']);
 Route::get('/formpage/{id}', [FormController::class, 'formpage']);
 Route::post('/createnewform/', [FormController::class, 'createnewform']);
 Route::post('/submitnewfield',[FormController::class, 'submitnewfield']);
+Route::post('/deployform',[FormController::class, 'deployform']);
