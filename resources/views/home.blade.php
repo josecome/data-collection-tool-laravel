@@ -136,7 +136,7 @@
                             <select class="form-control" name="field_type" id="field_type" style="width: 260px">
                                 <option>String</option>
                                 <option>Integer</option>
-                                <option>Option</option>
+                                <option>Select</option>
                             </select>
                         </td>
                     </tr>

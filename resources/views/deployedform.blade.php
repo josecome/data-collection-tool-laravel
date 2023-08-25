@@ -13,7 +13,7 @@
             {{ $form->form_name }}
         @endif
       </h1>
-      <form action="{{ Request::segment(2) }}" method="post" style="padding: 10px;">
+      <form action="/deployedpost/{{ Request::segment(2) }}" method="post" style="padding: 10px;">
         @csrf
         <table style="width: 100%; background-color: white; padding-bottom: 10px; margin-bottom: 10px;">
         @foreach ($fields as $key=>$f)
