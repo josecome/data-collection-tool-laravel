@@ -1,6 +1,12 @@
 @extends('template')
 @section('main')
     <main>
+        <style>
+            .fieldname {
+               width: 100%;
+               margin-bottom: 20px;
+            }
+        </style>
         <div style="width: 100%; overflow: hidden;">
             <div style="width: 280px; float: left;">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal"
@@ -179,7 +185,11 @@
                         <br>
                         @foreach ($fields as $key => $field)
                             <div style="width: 100%; background-color: white; padding-bottom: 10px; margin-bottom: 10px;">
-                                Label: {{ $field->field_label }} Name: {{ $field->field_name }}
+                                <span class="btn btn-info fieldname">{{ $field->field_label }}</span><br />
+                                <span class="btn btn-primary">Label</span> <span class="btn btn-secondary">{{ $field->field_label }}</span>
+                                <span class="btn btn-primary">Name</span> <span class="btn btn-secondary">{{ $field->field_name }}</span>
+                                <span class="btn btn-primary">Type</span> <span class="btn btn-secondary">{{ $field->field_type }}</span>
+                                <span class="btn btn-primary">Size</span> <span class="btn btn-secondary">{{ $field->field_size }}</span>
                             </div>
                         @endforeach
                     @else
@@ -256,7 +266,8 @@
                                         <tr>
                                             <td style="width: 100%;">
                                                 <input type="text" value="" name="{{ $field->field_name }}"
-                                                    style="width: 100%;" />
+                                                    style="width: 100%;"
+                                                />
                                             </td>
                                         </tr>
                                     @endforeach
