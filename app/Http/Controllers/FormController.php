@@ -32,7 +32,7 @@ class FormController extends Controller
         $deployed = ProjectFormMeta::where('form_status', 'deployed')->get(); //all();
         $draft = ProjectFormMeta::where('form_status', 'draft')->get();
         $arquived = ProjectFormMeta::where('form_status', 'archived')->get();
-        $form_fields = ProjectForm::where('form_meta_id', $id)->get();
+
         error_log($formid);
         error_log($id);
         return view(
@@ -42,7 +42,7 @@ class FormController extends Controller
                 'form_deployed' => json_decode($deployed),
                 'form_draft' => json_decode($draft),
                 'form_arquived' => json_decode($arquived),
-                'fields' => json_decode($form_fields)
+                'fields' => json_decode(ProjectFormMeta::find($id)->projectform)
             ]
         );
     }
