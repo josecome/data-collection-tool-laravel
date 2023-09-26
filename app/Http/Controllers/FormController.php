@@ -13,9 +13,12 @@ class FormController extends Controller
 {
     public function home()
     {
-        $deployed = ProjectFormMeta::where('form_status', 'deployed')->get(); //all();
-        $draft = ProjectFormMeta::where('form_status', 'draft')->get();
-        $arquived = ProjectFormMeta::where('form_status', 'arquived')->get();
+        $forms = ProjectFormMeta::whereIn('form_status', ['deployed', 'draft', 'archived'])->get();
+
+        $deployed = $forms->where('form_status', 'deployed');
+        $draft = $forms->where('form_status', 'draft');
+        $arquived = $forms->where('form_status', 'archived');
+
         return view(
             'home',
             [
@@ -28,21 +31,21 @@ class FormController extends Controller
 
     public function formpage(string $id)
     {
-        $formid = ProjectFormMeta::find($id); //all();
-        $deployed = ProjectFormMeta::where('form_status', 'deployed')->get(); //all();
-        $draft = ProjectFormMeta::where('form_status', 'draft')->get();
-        $arquived = ProjectFormMeta::where('form_status', 'archived')->get();
+        $formid = ProjectFormMeta::find($id);
+        $forms = ProjectFormMeta::whereIn('form_status', ['deployed', 'draft', 'archived'])->get();
 
-        error_log($formid);
-        error_log($id);
+        $deployed = $forms->where('form_status', 'deployed');
+        $draft = $forms->where('form_status', 'draft');
+        $arquived = $forms->where('form_status', 'archived');
+
         return view(
             'home',
             [
-                'form_id' => json_decode($formid),
-                'form_deployed' => json_decode($deployed),
-                'form_draft' => json_decode($draft),
-                'form_arquived' => json_decode($arquived),
-                'fields' => json_decode(ProjectFormMeta::find($id)->projectform)
+                'form_id' => $formid,
+                'form_deployed' => $deployed,
+                'form_draft' => $draft,
+                'form_arquived' => $arquived,
+                'fields' => ProjectFormMeta::find($id)->projectform,
             ]
         );
     }
