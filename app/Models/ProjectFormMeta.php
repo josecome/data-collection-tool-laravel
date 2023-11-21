@@ -23,4 +23,8 @@ class ProjectFormMeta extends Model
     {
         return $this->hasMany(ProjectForm::class, 'form_meta_id');
     }
+    public function sharedform(): HasMany
+    {
+        return $this->hasMany(Share::class, 'form_meta_id');
+    }
 }

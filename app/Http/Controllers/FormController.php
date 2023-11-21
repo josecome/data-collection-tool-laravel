@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use App\Models\ProjectFormMeta;
 use App\Models\ProjectForm;
 use Exception;
@@ -31,6 +32,11 @@ class FormController extends Controller
 
     public function formpage(string $id)
     {
+        if(!Gate::allows('isAdmin')
+        && !Gate::allows('IsTheOwnerOfTheProject')
+        && !Gate::allows('ProjectSharedWithCurrentUser')) {
+            abort(404, 'Not allowed');
+        }
         $formid = ProjectFormMeta::find($id);
         $forms = ProjectFormMeta::whereIn('form_status', ['deployed', 'draft', 'archived'])->get();
 
@@ -51,6 +57,11 @@ class FormController extends Controller
     }
     public function createnewform(Request $req)
     {
+        if(!Gate::allows('isAdmin')
+        && !Gate::allows('IsTheOwnerOfTheProject')
+        && !Gate::allows('ProjectSharedWithCurrentUser')) {
+            return back()->with('error', 'Not allowed!');
+        }
         $result = "";
         try {
             $proj = new ProjectFormMeta;
@@ -69,6 +80,11 @@ class FormController extends Controller
     }
     public function submitnewfield(Request $req)
     {
+        if(!Gate::allows('isAdmin')
+        && !Gate::allows('IsTheOwnerOfTheProject')
+        && !Gate::allows('ProjectSharedWithCurrentUser')) {
+            return back()->with('error', 'Not allowed!');
+        }
         $result = "";
         try {
             $proj = new ProjectForm;
@@ -88,6 +104,11 @@ class FormController extends Controller
     }
     public function deployform(Request $req)
     {
+        if(!Gate::allows('isAdmin')
+        && !Gate::allows('IsTheOwnerOfTheProject')
+        && !Gate::allows('ProjectSharedWithCurrentUser')) {
+            return back()->with('error', 'Not allowed!');
+        }
         $result = "";
         try {
             ProjectFormMeta::whereId((int) $req->form_url_d)->update(['form_status' => 'deployed']);
@@ -101,6 +122,11 @@ class FormController extends Controller
     }
     public function archiveform(Request $req)
     {
+        if(!Gate::allows('isAdmin')
+        && !Gate::allows('IsTheOwnerOfTheProject')
+        && !Gate::allows('ProjectSharedWithCurrentUser')) {
+            return back()->with('error', 'Not allowed!');
+        }
         $result = "";
         try {
             ProjectFormMeta::whereId((int) $req->form_url_a)->update(['form_status' => 'archived']);
